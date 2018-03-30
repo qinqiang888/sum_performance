@@ -1,0 +1,2 @@
+# sum_performance
+for循环和reduce方法实现累加所需要的时间对比
