@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关于sum累加的耗时实验</title>
+</head>
+<body>
+	<script>
+	// for循环
+		var arr = [1,2,3,4,5];
+		console.time('sum0');
+		Array.prototype.sum0 = function (){ 
+			for(var j=0;j<10000;j++){
+				var sumResult = 0;
+				 for (var i = 0; i < this.length; i++) { 
+					sumResult += parseInt(this[i]);
+		 		}
+			}
+		 	return sumResult;
+		 } 
+		console.log(arr.sum0()); // 15
+		console.timeEnd('sum0'); //5.000244140625ms
+		
+	// 使用reduce
+		var arr1 = [1,2,3,4,5];
+		console.time('sum1');
+		Array.prototype.sum1 = function (){ 
+			var sumResult = 0;	
+			for(var j=0;j<10000;j++){
+				return this.reduce (function (preValue, curValue) {
+				 	return preValue + curValue; 
+				 })
+			}
+		 	return sumResult;
+		 } 
+		console.log(arr1.sum1()); // 15
+		console.timeEnd('sum1'); //1.000244140625ms
+		
+	</script>
+</body>
+</html>
